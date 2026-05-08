@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/settingsRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F7FA"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="System"
+            android:textColor="#0F172A"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/settingsInfoText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="配置连接、设备和维护项。"
+            android:textColor="#475569"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/appVersionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="App unknown"
+            android:textColor="#64748B"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            style="@style/WatcherSettingsSection"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                style="@style/WatcherSettingsTitle"
+                android:text="Connection" />
+
+            <TextView
+                style="@style/WatcherSettingsLabel"
+                android:layout_marginTop="10dp"
+                android:text="Relay URL" />
+
+            <EditText
+                android:id="@+id/relayUrlInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:hint="https://relay.example.com"
+                android:inputType="textUri"
+                android:singleLine="true" />
+
+            <TextView
+                style="@style/WatcherSettingsLabel"
+                android:layout_marginTop="12dp"
+                android:text="Owner token" />
+
+            <EditText
+                android:id="@+id/ownerTokenInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:hint="用于注册和管理"
+                android:inputType="textPassword"
+                android:singleLine="true" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/saveSettingsButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Save" />
+
+                <Button
+                    android:id="@+id/testConnectionButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:text="Test" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/securityButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Security" />
+
+            <TextView
+                android:id="@+id/certificateStatusText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="TLS: unknown"
+                android:textColor="#64748B"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/trustCertificateButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Trust HTTPS Certificate" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/WatcherSettingsSection"
+            android:layout_marginTop="14dp">
+
+            <TextView
+                style="@style/WatcherSettingsTitle"
+                android:text="App &amp; Display" />
+
+            <TextView
+                android:id="@+id/displayConfigText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Language: 中文 · Time zone: Asia/Shanghai"
+                android:textColor="#475569"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/updateAppButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Update App" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/languageToggleButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="中文 / EN" />
+
+                <Button
+                    android:id="@+id/saveDisplayButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:text="Save Display" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/timeZoneInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Asia/Shanghai"
+                android:inputType="text"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/WatcherSettingsSection"
+            android:layout_marginTop="14dp">
+
+            <TextView
+                style="@style/WatcherSettingsTitle"
+                android:text="Device &amp; Push" />
+
+            <TextView
+                android:id="@+id/deviceStatusText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Device not registered."
+                android:textColor="#475569"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/notificationStatusText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Notifications: unknown"
+                android:textColor="#64748B"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/pushStatusText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Push: not configured"
+                android:textColor="#64748B"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/registerDeviceButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Register Device" />
+
+            <Button
+                android:id="@+id/registerPushButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Register Push" />
+
+            <Button
+                android:id="@+id/clearRegistrationButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Clear Device Registration" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/WatcherSettingsSection"
+            android:layout_marginTop="14dp">
+
+            <TextView
+                style="@style/WatcherSettingsTitle"
+                android:text="Runtime" />
+
+            <TextView
+                android:id="@+id/shellStatusText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Shell status not loaded."
+                android:textColor="#475569"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/refreshShellButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Refresh" />
+
+                <Button
+                    android:id="@+id/restartShellButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:text="Restart" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/componentStatusContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/WatcherSettingsSection"
+            android:layout_marginTop="14dp">
+
+            <TextView
+                style="@style/WatcherSettingsTitle"
+                android:text="Maintenance" />
+
+            <Button
+                android:id="@+id/clearCacheButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Clear Task Feed Cache" />
+
+            <Button
+                android:id="@+id/clearOpencodeCacheButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Clear Opencode Cache" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/WatcherSettingsSection"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                style="@style/WatcherSettingsTitle"
+                android:text="Diagnostics" />
+
+            <Button
+                android:id="@+id/copyDebugReportButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Copy Debug Report" />
+
+            <TextView
+                android:id="@+id/shellDiagnosticsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Recent diagnostics will appear here."
+                android:textColor="#64748B"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/developerDiagnosticsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="No recorded app crash."
+                android:textColor="#64748B"
+                android:textIsSelectable="true"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

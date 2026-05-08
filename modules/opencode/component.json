@@ -1,0 +1,183 @@
+{
+  "id": "opencode",
+  "name": "Opencode",
+  "version": "0.1.0",
+  "stage": "prototype",
+  "release_line": "component-opencode",
+  "release_channel": "public_preview",
+  "shell_contract": "v2",
+  "component_class": "light",
+  "runtime_shape": "in_process",
+  "runtime_owner": "watcher-service",
+  "capabilities": [
+    "interactive_session",
+    "conversation_snapshot",
+    "pending_input",
+    "permission_flow",
+    "artifact",
+    "runtime_options",
+    "operation",
+    "health"
+  ],
+  "streams": [
+    "opencode.session",
+    "opencode.turn",
+    "opencode.permission",
+    "opencode.question"
+  ],
+  "resources": [
+    "session",
+    "turn",
+    "event",
+    "permission_request",
+    "question_request",
+    "worktree",
+    "operation"
+  ],
+  "operations": [
+    "session.start",
+    "turn.start",
+    "turn.cancel",
+    "question.reply",
+    "question.reject",
+    "permission.resolve",
+    "mirror.message",
+    "mirror.abort",
+    "worktree.discard"
+  ],
+  "surfaces": [
+    {
+      "id": "sessions",
+      "title": "Opencode Sessions",
+      "kind": "collection",
+      "primary": true,
+      "target": {
+        "component_id": "opencode",
+        "surface": "sessions"
+      }
+    },
+    {
+      "id": "session",
+      "title": "Opencode Session",
+      "kind": "conversation",
+      "target": {
+        "component_id": "opencode",
+        "surface": "session"
+      }
+    },
+    {
+      "id": "turn",
+      "title": "Opencode Turn",
+      "kind": "operation",
+      "target": {
+        "component_id": "opencode",
+        "surface": "turn"
+      }
+    },
+    {
+      "id": "worktree",
+      "title": "Worktree",
+      "kind": "artifact",
+      "target": {
+        "component_id": "opencode",
+        "surface": "worktree"
+      }
+    }
+  ],
+  "default_target": {
+    "component_id": "opencode",
+    "surface": "sessions"
+  },
+  "actions": [
+    {
+      "action_id": "mirror.message",
+      "label": "Send message",
+      "kind": "submit",
+      "operation_name": "mirror.message",
+      "async": true,
+      "target": {
+        "component_id": "opencode",
+        "surface": "session"
+      }
+    },
+    {
+      "action_id": "mirror.abort",
+      "label": "Abort session",
+      "kind": "abort",
+      "operation_name": "mirror.abort",
+      "async": true,
+      "requires_confirmation": true,
+      "target": {
+        "component_id": "opencode",
+        "surface": "session"
+      }
+    },
+    {
+      "action_id": "question.reply",
+      "label": "Reply question",
+      "kind": "reply",
+      "operation_name": "question.reply",
+      "async": true,
+      "target": {
+        "component_id": "opencode",
+        "surface": "session"
+      }
+    },
+    {
+      "action_id": "question.reject",
+      "label": "Reject question",
+      "kind": "reject",
+      "operation_name": "question.reject",
+      "async": true,
+      "target": {
+        "component_id": "opencode",
+        "surface": "session"
+      }
+    },
+    {
+      "action_id": "permission.resolve",
+      "label": "Resolve permission",
+      "kind": "resolve",
+      "operation_name": "permission.resolve",
+      "async": true,
+      "target": {
+        "component_id": "opencode",
+        "surface": "session"
+      }
+    },
+    {
+      "action_id": "worktree.discard",
+      "label": "Discard worktree changes",
+      "kind": "discard",
+      "operation_name": "worktree.discard",
+      "async": true,
+      "destructive": true,
+      "requires_confirmation": true,
+      "target": {
+        "component_id": "opencode",
+        "surface": "worktree"
+      }
+    }
+  ],
+  "android_surfaces": [
+    "opencode_sessions",
+    "opencode_session"
+  ],
+  "shell_dependencies": [
+    "owner_auth",
+    "event_bus",
+    "operation_contract",
+    "app_sync",
+    "diagnostics"
+  ],
+  "docs": [
+    "modules/opencode/README.md",
+    "docs/modules/OPENCODE_AGENT.md"
+  ],
+  "non_goals": [
+    "shell_transport",
+    "generic_agent_platform",
+    "android_home_chat",
+    "unattended_file_mutation"
+  ]
+}

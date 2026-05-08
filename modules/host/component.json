@@ -1,0 +1,73 @@
+{
+  "id": "host",
+  "name": "Host",
+  "version": "0.1.0",
+  "stage": "active",
+  "release_line": "component-host",
+  "release_channel": "public_preview",
+  "shell_contract": "v2",
+  "component_class": "light",
+  "runtime_shape": "in_process",
+  "runtime_owner": "watcher-service",
+  "capabilities": [
+    "diagnostics",
+    "health",
+    "artifact",
+    "file_browser"
+  ],
+  "streams": [],
+  "resources": [
+    "snapshot",
+    "file_root",
+    "file"
+  ],
+  "operations": [
+    "file_root.create",
+    "file_root.delete"
+  ],
+  "surfaces": [
+    {
+      "id": "overview",
+      "title": "Host",
+      "kind": "diagnostics",
+      "primary": true,
+      "target": {
+        "component_id": "host",
+        "surface": "overview"
+      }
+    },
+    {
+      "id": "files",
+      "title": "Files",
+      "kind": "collection",
+      "target": {
+        "component_id": "host",
+        "surface": "files"
+      }
+    }
+  ],
+  "default_target": {
+    "component_id": "host",
+    "surface": "overview"
+  },
+  "actions": [],
+  "android_surfaces": [
+    "host_overview"
+  ],
+  "shell_dependencies": [
+    "owner_auth",
+    "module_registry",
+    "app_sync",
+    "diagnostics"
+  ],
+  "docs": [
+    "modules/host/README.md",
+    "docs/modules/HOST_MODULE.md"
+  ],
+  "non_goals": [
+    "remote_shell",
+    "file_upload",
+    "file_delete",
+    "public_share_links"
+  ]
+}

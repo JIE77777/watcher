@@ -1,0 +1,60 @@
+{
+  "fetched_at": "2026-05-07T00:00:00Z",
+  "datasets": {
+    "models": {
+      "records": [
+        {
+          "record_id": "openai-gpt-5",
+          "title": "GPT-5",
+          "subtitle": "OpenAI",
+          "data": {
+            "rank": 1,
+            "model_id": "openai-gpt-5",
+            "model": "GPT-5",
+            "provider": "OpenAI",
+            "category": "general",
+            "score": 94.2,
+            "context": "large",
+            "price_input": 1.25,
+            "price_output": 10.0,
+            "updated_at": "2026-05-07"
+          }
+        },
+        {
+          "record_id": "anthropic-claude-sonnet",
+          "title": "Claude Sonnet",
+          "subtitle": "Anthropic",
+          "data": {
+            "rank": 2,
+            "model_id": "anthropic-claude-sonnet",
+            "model": "Claude Sonnet",
+            "provider": "Anthropic",
+            "category": "coding",
+            "score": 92.8,
+            "context": "large",
+            "price_input": 3.0,
+            "price_output": 15.0,
+            "updated_at": "2026-05-07"
+          }
+        },
+        {
+          "record_id": "google-gemini-pro",
+          "title": "Gemini Pro",
+          "subtitle": "Google",
+          "data": {
+            "rank": 3,
+            "model_id": "google-gemini-pro",
+            "model": "Gemini Pro",
+            "provider": "Google",
+            "category": "multimodal",
+            "score": 89.4,
+            "context": "large",
+            "price_input": 1.0,
+            "price_output": 8.0,
+            "updated_at": "2026-05-07"
+          }
+        }
+      ]
+    }
+  }
+}

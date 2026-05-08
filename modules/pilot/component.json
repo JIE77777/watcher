@@ -1,0 +1,91 @@
+{
+  "id": "pilot",
+  "name": "Pilot",
+  "version": "0.1.0",
+  "stage": "archived",
+  "release_line": "archive-pilot",
+  "release_channel": "archived",
+  "shell_contract": "v2",
+  "component_class": "heavy",
+  "runtime_shape": "worker",
+  "runtime_owner": "watcher-service",
+  "capabilities": [
+    "archived_reference",
+    "brief",
+    "operation",
+    "health"
+  ],
+  "streams": [
+    "pilot.suggestion"
+  ],
+  "resources": [
+    "brief",
+    "suggestion",
+    "artifact",
+    "chat_session"
+  ],
+  "operations": [
+    "brief.create",
+    "chat.turn"
+  ],
+  "surfaces": [
+    {
+      "id": "session",
+      "title": "Pilot Session",
+      "kind": "conversation",
+      "primary": true,
+      "target": {
+        "component_id": "pilot",
+        "surface": "session"
+      }
+    },
+    {
+      "id": "operations",
+      "title": "Pilot Operations",
+      "kind": "operation_list",
+      "target": {
+        "component_id": "pilot",
+        "surface": "operations"
+      }
+    }
+  ],
+  "default_target": {
+    "component_id": "pilot",
+    "surface": "session"
+  },
+  "actions": [],
+  "android_surfaces": [],
+  "shell_dependencies": [
+    "owner_auth",
+    "event_bus",
+    "operation_contract",
+    "diagnostics",
+    "worker_lane"
+  ],
+  "docs": [
+    "modules/pilot/README.md"
+  ],
+  "non_goals": [
+    "public_mainline_module",
+    "default_codex_runtime",
+    "automatic_code_execution",
+    "approval_bypass"
+  ],
+  "worker": {
+    "entrypoint": "python3",
+    "args": [
+      "modules/pilot/worker.py"
+    ],
+    "env": {
+      "PYTHONUNBUFFERED": "1"
+    },
+    "healthcheck": "process_and_ping",
+    "operations": [
+      "brief.create",
+      "chat.turn"
+    ],
+    "streams": [
+      "pilot.suggestion"
+    ]
+  }
+}

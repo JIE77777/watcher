@@ -1,0 +1,85 @@
+{
+  "schema_version": "box.v1",
+  "id": "llm_leaderboard",
+  "title": "LLM Leaderboard",
+  "description": "Public-safe example box for model ranking, pricing, and capability snapshots.",
+  "order": 10,
+  "sources": [
+    {
+      "id": "fixture",
+      "kind": "fixture_json",
+      "path": "llm_leaderboard.fixture.json"
+    }
+  ],
+  "datasets": [
+    {
+      "id": "models",
+      "name": "models",
+      "title": "Models",
+      "kind": "ranking",
+      "source_id": "fixture",
+      "source_dataset": "models",
+      "view_id": "overall_rank",
+      "group_by": "category",
+      "primary_keys": ["model_id"],
+      "sort": [
+        {
+          "field": "score",
+          "direction": "desc"
+        }
+      ]
+    }
+  ],
+  "views": [
+    {
+      "view_id": "overall_rank",
+      "type": "ranking",
+      "title": "Overall",
+      "dataset_id": "models",
+      "group_by": "category",
+      "columns": [
+        {
+          "field": "rank",
+          "label": "#",
+          "type": "number"
+        },
+        {
+          "field": "model",
+          "label": "Model",
+          "type": "text"
+        },
+        {
+          "field": "provider",
+          "label": "Provider",
+          "type": "tag"
+        },
+        {
+          "field": "score",
+          "label": "Score",
+          "type": "score"
+        },
+        {
+          "field": "price_input",
+          "label": "Input $/M",
+          "type": "number"
+        }
+      ],
+      "sort": [
+        {
+          "field": "score",
+          "direction": "desc"
+        }
+      ]
+    }
+  ],
+  "default_views": ["overall_rank"],
+  "signals": [
+    {
+      "id": "top_model",
+      "title": "Top model",
+      "dataset": "models",
+      "field": "model",
+      "mode": "first"
+    }
+  ]
+}

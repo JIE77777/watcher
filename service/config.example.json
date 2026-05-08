@@ -1,0 +1,103 @@
+{
+  "bind_addr": "127.0.0.1:8765",
+  "database_path": "./state/service.db",
+  "tools_root": "./tools",
+  "owner_token": "change-me-service-owner-token",
+  "scheduler_interval_seconds": 10,
+  "relay": {
+    "base_url": "http://127.0.0.1:8780",
+    "owner_token": "change-me-relay-owner-token"
+  },
+  "relay_push": {
+    "base_url": "http://127.0.0.1:8780",
+    "owner_token": "change-me-relay-owner-token"
+  },
+  "push": {
+    "xiaomi": {
+      "app_id": "",
+      "app_key": "",
+      "app_secret": "",
+      "use_sandbox": false,
+      "channel_id": ""
+    },
+    "fcm": {
+      "project_id": "",
+      "service_account_json_path": ""
+    },
+    "apns": {
+      "team_id": "",
+      "key_id": "",
+      "bundle_id": "",
+      "key_file": "",
+      "use_sandbox": false
+    },
+    "huawei": {
+      "app_id": "",
+      "app_secret": ""
+    }
+  },
+  "codex": {
+    "executable": "codex",
+    "sessions_root": "",
+    "prompt_timeout_seconds": 300
+  },
+  "opencode": {
+    "executable": "opencode",
+    "driver": "cli_adapter",
+    "server_executable": "opencode",
+    "server_url": "",
+    "server_hostname": "127.0.0.1",
+    "server_port": 4096,
+    "server_password": "",
+    "gateway_env_path": "",
+    "model_catalog_path": "",
+    "agent_home": "./state/opencode_home",
+    "worktree_root": "./state/opencode_worktrees",
+    "native_database_path": "",
+    "default_timeout_seconds": 900,
+    "allowed_repo_roots": [
+      "."
+    ]
+  },
+  "host": {
+    "max_download_bytes": 524288000,
+    "show_hidden": false,
+    "file_roots": [
+      {
+        "id": "workspace",
+        "label": "Workspace",
+        "path": ".",
+        "download": true
+      },
+      {
+        "id": "releases",
+        "label": "Releases",
+        "path": "./releases",
+        "download": true
+      }
+    ]
+  },
+  "shell": {
+    "manifest_path": "./watcher.shell.json",
+    "version_file": "./VERSION",
+    "components_root": "./modules"
+  },
+  "display": {
+    "default_language": "zh",
+    "timezone": "Asia/Shanghai"
+  },
+  "security": {
+    "allowed_hosts": [
+      "127.0.0.1",
+      "localhost"
+    ],
+    "trusted_proxies": [],
+    "secure_cookies": false,
+    "session_secret": "change-me-session-secret",
+    "session_ttl_seconds": 86400,
+    "max_body_bytes": 1048576,
+    "global_rate_limit_per_minute": 240,
+    "login_rate_limit_per_minute": 20,
+    "enable_hsts": false
+  }
+}

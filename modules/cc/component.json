@@ -1,0 +1,102 @@
+{
+  "id": "cc",
+  "name": "CC MiMo",
+  "version": "0.1.0",
+  "stage": "archived",
+  "release_line": "archive-cc-mimo",
+  "release_channel": "archived",
+  "shell_contract": "v2",
+  "component_class": "heavy",
+  "runtime_shape": "worker",
+  "runtime_owner": "watcher-service",
+  "capabilities": [
+    "archived_reference",
+    "legacy_agent_session",
+    "patch_review",
+    "operation",
+    "health"
+  ],
+  "streams": [
+    "cc.session"
+  ],
+  "resources": [
+    "session",
+    "turn",
+    "patch"
+  ],
+  "operations": [
+    "session.turn",
+    "patch.apply",
+    "patch.discard"
+  ],
+  "surfaces": [
+    {
+      "id": "sessions",
+      "title": "CC Sessions",
+      "kind": "collection",
+      "primary": true,
+      "target": {
+        "component_id": "cc",
+        "surface": "sessions"
+      }
+    },
+    {
+      "id": "session",
+      "title": "CC Session",
+      "kind": "conversation",
+      "target": {
+        "component_id": "cc",
+        "surface": "session"
+      }
+    },
+    {
+      "id": "patch",
+      "title": "Patch",
+      "kind": "artifact",
+      "target": {
+        "component_id": "cc",
+        "surface": "patch"
+      }
+    }
+  ],
+  "default_target": {
+    "component_id": "cc",
+    "surface": "sessions"
+  },
+  "actions": [],
+  "android_surfaces": [],
+  "shell_dependencies": [
+    "owner_auth",
+    "event_bus",
+    "operation_contract",
+    "diagnostics",
+    "worker_lane"
+  ],
+  "docs": [
+    "modules/cc/README.md"
+  ],
+  "non_goals": [
+    "public_mainline_module",
+    "default_codex_runtime",
+    "unattended_file_mutation",
+    "provider_secret_storage"
+  ],
+  "worker": {
+    "entrypoint": "python3",
+    "args": [
+      "modules/cc/worker.py"
+    ],
+    "env": {
+      "PYTHONUNBUFFERED": "1",
+      "WATCHER_CC_MIMO_PERMISSION_MODE": "bypassPermissions",
+      "WATCHER_CC_MIMO_ALLOWED_TOOLS": "default"
+    },
+    "healthcheck": "process_and_ping",
+    "operations": [
+      "session.turn"
+    ],
+    "streams": [
+      "cc.session"
+    ]
+  }
+}

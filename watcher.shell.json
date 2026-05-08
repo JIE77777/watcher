@@ -1,0 +1,25 @@
+{
+  "id": "watcher.shell",
+  "name": "Watcher Shell",
+  "stage": "active",
+  "contract_version": "v2",
+  "release_line": "shell",
+  "release_channel": "public_preview",
+  "runtime_defaults": {
+    "light_component_runtime": "in_process",
+    "heavy_component_runtime": "worker"
+  },
+  "worker_contract": {
+    "version": "v1",
+    "spawn_model": "shell_managed",
+    "health_model": "process_and_healthcheck",
+    "log_model": "stdio",
+    "event_model": "typed_envelope",
+    "operation_model": "shell_routed"
+  },
+  "docs": [
+    "docs/foundation/SHELL_CONTRACT_V2.md",
+    "docs/foundation/RELEASE_LINES.md",
+    "docs/foundation/SHELL_COMPONENT_MODEL.md"
+  ]
+}

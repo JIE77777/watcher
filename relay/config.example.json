@@ -1,0 +1,49 @@
+{
+  "bind_addr": "127.0.0.1:8780",
+  "database_path": "./state/relay.db",
+  "owner_token": "change-me-relay-owner-token",
+  "service": {
+    "base_url": "http://127.0.0.1:8765",
+    "owner_token": "change-me-service-owner-token",
+    "request_timeout_seconds": 300
+  },
+  "app_release": {
+    "version_code": 0,
+    "version_name": "",
+    "notes": "",
+    "apk_path": "",
+    "published_at": ""
+  },
+  "push": {
+    "xiaomi": {
+      "app_id": "",
+      "app_key": "",
+      "app_secret": "",
+      "use_sandbox": true,
+      "channel_id": "watcher_push"
+    }
+  },
+  "display": {
+    "default_language": "zh",
+    "timezone": "Asia/Shanghai"
+  },
+  "security": {
+    "allowed_hosts": [
+      "127.0.0.1",
+      "localhost",
+      "10.0.2.2"
+    ],
+    "trusted_proxies": [],
+    "max_body_bytes": 1048576,
+    "global_rate_limit_per_minute": 240,
+    "enable_hsts": false,
+    "tls": {
+      "enabled": false,
+      "auto_self_signed": true,
+      "cert_file": "",
+      "key_file": "",
+      "fingerprint_file": "",
+      "hosts": []
+    }
+  }
+}

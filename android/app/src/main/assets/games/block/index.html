@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>打砖块</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="game-shell" aria-label="打砖块游戏">
+        <header class="hud">
+          <div>
+            <h1>打砖块</h1>
+            <p>移动弹板，反弹弹球，清空每一关的砖块阵列。</p>
+          </div>
+          <div class="stats" aria-label="游戏状态">
+            <div>
+              <span>分数</span>
+              <strong id="score">0</strong>
+            </div>
+            <div>
+              <span>关卡</span>
+              <strong id="level">1</strong>
+            </div>
+            <div>
+              <span>球数</span>
+              <strong id="balls">1</strong>
+            </div>
+          </div>
+        </header>
+
+        <canvas id="game" width="960" height="640" aria-label="游戏区域"></canvas>
+
+        <footer class="toolbar">
+          <button id="start-button" type="button">开始 / 暂停</button>
+          <button id="reset-button" type="button">重新开始</button>
+          <p id="status" role="status">按空格开始，鼠标或方向键移动弹板。</p>
+        </footer>
+      </section>
+    </main>
+
+    <script src="game.js"></script>
+  </body>
+</html>

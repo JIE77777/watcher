@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Watcher</string>
+    <string name="watcher_inbox">Watcher Task Feed</string>
+</resources>
