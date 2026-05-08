@@ -48,6 +48,7 @@
     "server_url": "",
     "server_hostname": "127.0.0.1",
     "server_port": 4096,
+    "server_username": "opencode",
     "server_password": "",
     "gateway_env_path": "",
     "model_catalog_path": "",
@@ -91,6 +92,7 @@
       "127.0.0.1",
       "localhost"
     ],
+    "trusted_origins": [],
     "trusted_proxies": [],
     "secure_cookies": false,
     "session_secret": "change-me-session-secret",

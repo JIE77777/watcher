@@ -79,3 +79,9 @@ Watcher 不把安全模块做成复杂权限系统。推荐顺序是：
 - `allowed_hosts` 配到正式域名
 - `trusted_proxies` 配到真实反代网段
 - 保留限流，不要为了“省事”直接关掉
+
+临时通过 VS Code、Codespaces 或 Dev Tunnels 转发 `service` dashboard 时，
+可把具体转发域名加入 `service.security.allowed_hosts` 和
+`service.security.trusted_origins`。`trusted_origins` 支持 `*.example.com`
+这种后缀匹配，只影响 dashboard 表单 POST 的 same-origin 放行，不替代
+owner token。

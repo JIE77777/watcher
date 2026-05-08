@@ -426,6 +426,9 @@ func (a *App) opencodeServerEnv() []string {
 	if password := strings.TrimSpace(a.cfg.Opencode.ServerPassword); password != "" {
 		env["OPENCODE_SERVER_PASSWORD"] = password
 	}
+	if username := strings.TrimSpace(a.cfg.Opencode.ServerUsername); username != "" {
+		env["OPENCODE_SERVER_USERNAME"] = username
+	}
 	if env["LITELLM_AGENT_KEY"] == "" && env["LITELLM_KEY_OPENCODE"] != "" {
 		env["LITELLM_AGENT_KEY"] = env["LITELLM_KEY_OPENCODE"]
 	}
@@ -1169,7 +1172,11 @@ func (a *App) unregisterOpencodeQuestionReplyTarget(requestID string) {
 
 func (a *App) setOpencodeServerAuth(req *http.Request) {
 	if password := strings.TrimSpace(a.cfg.Opencode.ServerPassword); password != "" {
-		req.SetBasicAuth("watcher", password)
+		username := strings.TrimSpace(a.cfg.Opencode.ServerUsername)
+		if username == "" {
+			username = "opencode"
+		}
+		req.SetBasicAuth(username, password)
 	}
 }
 
