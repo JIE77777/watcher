@@ -1,32 +1,5 @@
 # Watcher
 
-`watcher` 现在已经从单用途脚本扩成一个“个人工具终端”骨架：
-
-- `tools/`：采集层
-- `devtools/`：工程辅助工具层
-- `service/`：本机任务调度、快照、diff、typed event、投递
-- `relay/`：typed durable event bus 与设备入口
-- `android/`：移动壳层、模块入口、设置/诊断与会话客户端
-- `docs/`：协议和架构说明
-
-项目按 `public_preview` 线准备开源，面向有同类需求的 self-hosted
-owner：自己运行个人服务器、relay、Android 终端和本地 coding-agent
-工作流。开源要求见 [Open Source Readiness](docs/foundation/OPEN_SOURCE_READINESS.md)。
-
-`box` 作为配置驱动的信息源组件进入公开范围，内置 public-safe 的 LLM
-leaderboard 示例；现有个人抓取工具只作为 private box source 保留，不进入公开导出。
-
-## Public Mainline
-
-首轮公开主线只推荐这几部分：
-
-- base shell：`service`、`relay`、Android、typed event、operation、module contract
-- `opencode`：opencode native session 的 Android conversation bridge
-- `box`：配置驱动的信息源 / dataset / view 示例
-- `host`：服务器状态监控和安全文件下载工具
-
-`codex`、`pilot`、`cc` 保留为 archived reference，不作为新用户入口或扩展示范。
-
 ## 当前可用能力
 
 - 本地 Dashboard：
