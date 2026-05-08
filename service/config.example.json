@@ -92,7 +92,6 @@
       "127.0.0.1",
       "localhost"
     ],
-    "trusted_origins": [],
     "trusted_proxies": [],
     "secure_cookies": false,
     "session_secret": "change-me-session-secret",

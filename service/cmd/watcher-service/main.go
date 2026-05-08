@@ -111,7 +111,6 @@ type Config struct {
 
 type SecurityConfig struct {
 	AllowedHosts             []string `json:"allowed_hosts"`
-	TrustedOrigins           []string `json:"trusted_origins"`
 	TrustedProxies           []string `json:"trusted_proxies"`
 	SecureCookies            bool     `json:"secure_cookies"`
 	SessionSecret            string   `json:"session_secret"`
@@ -315,32 +314,31 @@ func codexBridgeFromConfig(cfg Config) codexbridge.Bridge {
 
 func (a *App) routes() http.Handler {
 	mux := http.NewServeMux()
-	sameOrigin := serverguard.SameOriginWithTrustedOrigins(false, a.cfg.Security.TrustedOrigins)
 
 	mux.HandleFunc("GET /api/", a.handleAPINotFound)
 	mux.HandleFunc("GET /", a.handleDashboard)
 	mux.Handle("POST /login", serverguard.Chain(
 		http.HandlerFunc(a.handleLogin),
-		sameOrigin,
+		serverguard.SameOrigin(false),
 		a.loginLimiter.Middleware(func(r *http.Request) string {
 			return a.clientIP(r) + "|login"
 		}),
 	))
 	mux.Handle("POST /logout", serverguard.Chain(
 		http.HandlerFunc(a.handleLogout),
-		sameOrigin,
+		serverguard.SameOrigin(false),
 	))
 	mux.Handle("POST /ui/tasks", serverguard.Chain(
 		a.uiAuth(http.HandlerFunc(a.handleCreateTaskForm)),
-		sameOrigin,
+		serverguard.SameOrigin(false),
 	))
 	mux.Handle("POST /ui/tasks/{taskID}/run", serverguard.Chain(
 		a.uiAuth(http.HandlerFunc(a.handleRunTaskForm)),
-		sameOrigin,
+		serverguard.SameOrigin(false),
 	))
 	mux.Handle("POST /ui/tasks/{taskID}/toggle", serverguard.Chain(
 		a.uiAuth(http.HandlerFunc(a.handleToggleTaskForm)),
-		sameOrigin,
+		serverguard.SameOrigin(false),
 	))
 
 	mux.HandleFunc("GET /api/v1/health", a.handleHealth)

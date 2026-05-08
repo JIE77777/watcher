@@ -6,6 +6,7 @@
 CONTRIBUTING.md
 LICENSE
 README.md
+README.en.md
 VERSION
 go.mod
 go.sum
